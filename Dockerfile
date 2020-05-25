@@ -9,6 +9,6 @@ RUN apk add --no-cache redis && \
     sed -i "s|daemonize yes|daemonize no|" /etc/redis.conf && \
     sed -i "s|bind 127.0.0.1|# bind 127.0.0.1|" /etc/redis.conf
     #sed -i "s|port 6379|port 6793|" /etc/redis.conf && \
-    #sed -i "s|# requirepass foobared|requirepass xxxxxx|" /etc/redis.conf
+    sed -i "s|# requirepass foobared|requirepass ${REDIS_PASS}|" /etc/redis.conf
 EXPOSE 6379
 CMD ["redis-server","/etc/redis.conf"]
